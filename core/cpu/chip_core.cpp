@@ -77,7 +77,7 @@ namespace cip {
                     ++instructions_executed;
                 }
 
-                //this->m_manager.update_fb(this->m_display);
+                this->m_manager.update_fb(this->m_display);
                 const auto end = std::chrono::high_resolution_clock::now();
                 const auto execution_time = std::chrono::duration_cast<std::chrono::nanoseconds>(end - before_execution)
                     .count();

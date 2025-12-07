@@ -14,7 +14,7 @@ namespace cip {
                                 uint8_t n
                                 >(auto& jp_table) {
                                     jp_table[static_cast<uint16_t>(vx) << 8 | (vy << 4) | n] = +[] {
-                                        //core->t_draw_sprite<vx, vy, n>();
+                                        core->t_draw_sprite<vx, vy, n>();
                                     };
                                 }>(jp_table);
                         }>(jmp_table);
