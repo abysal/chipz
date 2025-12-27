@@ -2,7 +2,7 @@
 
 namespace cip {
     void Display::clear() noexcept {
-        std::ranges::fill(this->m_pixels, 0);
+        std::ranges::fill(this->m_pixels, 1);
     }
 
     void Display::draw_sprite(uint8_t x, uint8_t y, const std::span<const uint8_t> sprite_data) noexcept {

@@ -67,7 +67,7 @@ namespace cip {
                     --this->m_timer;
                 }
 
-                if (batch_count % 100 == 0) {
+                if (batch_count % 60 == 0) {
                     std::println("{}", instructions_per_batch);
                 }
                 batch_count++;

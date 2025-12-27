@@ -1,5 +1,6 @@
 #pragma once
 #include "cpu/chip_core.hpp"
+#include "jpu/jpu_core.hpp"
 
 #include <thread>
 
@@ -32,5 +33,6 @@ namespace cip {
         std::atomic_bool m_core_stopped{ false };
         std::jthread m_emulation_thread{};
         std::unique_ptr<ChipCore> m_core{};
+        std::unique_ptr<jip::JpuCore> m_jit_core{};
     };
 } // cip

@@ -59,10 +59,8 @@ namespace cip {
         template <uint8_t Reg, uint8_t Val>
         constexpr void t_add() noexcept {
             auto& reg = this->reg(Reg);
-            auto& vf = this->reg(0xF);
-            vf.set(
-                reg.add(Val));
-        }
+                reg.add(Val);
+    }
 
         template <uint8_t Target, uint8_t Source>
         constexpr void t_add_reg() noexcept {
@@ -261,7 +259,7 @@ namespace cip {
         std::array<Register, RegisterCount> m_registers{};
         FrontEndManager& m_manager;
         Display m_display;
-        StaticStack<uint16_t, 48> m_stack{};
+        StaticVector<uint16_t, 48> m_stack{};
         std::vector<uint8_t> m_memory{};
         uint16_t m_ip{ 0x200 };
         uint16_t m_i_register{ 0x0 };

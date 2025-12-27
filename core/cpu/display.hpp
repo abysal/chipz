@@ -9,9 +9,7 @@ namespace cip {
 
     class Display {
     public:
-        Display() {
-            this->m_pixels.resize(width * height);
-        }
+        Display() = default;
 
         void clear() noexcept;
 
@@ -25,7 +23,7 @@ namespace cip {
         void set_pixel(uint8_t x, uint8_t y, uint8_t value) noexcept;
 
     private:
-        std::vector<uint8_t> m_pixels{};
+        std::array<uint8_t, width * height> m_pixels;
     };
 
     struct FrontEndManager {
