@@ -1,5 +1,7 @@
 #include "host.hpp"
 
+#include "constants.hpp"
+
 #include <functional>
 #include <print>
 #include <raylib.h>
@@ -216,14 +218,11 @@ namespace cip {
     Host::Host() {
         SetTargetFPS(60);
         InitWindow(width * 10, height * 10, "Chip Core");
-        this->m_core = std::make_unique<ChipCore>(*this);
-        this->m_jit_core = std::make_unique<jip::JpuCore>();
+        this->m_core = std::make_unique<ChipCore>();
 
         std::jthread thread{ [this] {
-            // this->m_core->load(std::span{ cell_1d });
-            // this->m_core->run();
-            this->m_jit_core->core_display.clear();
-            this->m_jit_core->load(corax);
+            this->m_core->load_rom(chip8_logo, 0x200);
+            this->m_core->execute();
         } };
 
         this->m_emulation_thread.swap(thread);
@@ -242,14 +241,12 @@ namespace cip {
 
             for (auto x = 0; x < width; x++) {
                 for (auto y = 0; y < height; y++) {
-                    const auto white = this->m_jit_core->core_display.is_set(x, y);
-                    const auto col = white ? BLUE : DARKGRAY;
                     DrawRectangle(
                         x * static_cast<int>(cube_width),
                         y * static_cast<int>(cube_height),
                         static_cast<int>(cube_width),
                         static_cast<int>(cube_height),
-                        col
+                        PINK
                     );
                 }
             }

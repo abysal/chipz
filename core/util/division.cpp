@@ -3,7 +3,7 @@
 #include <array>
 #include <bit>
 
-namespace jip {
+namespace cip {
 
     constexpr Div8Info compute_magic_for_divisor_impl(uint8_t divisor) noexcept {
 
@@ -76,4 +76,4 @@ namespace jip {
 
     Div8Info compute_magic_for_d(const uint8_t divisor) noexcept { return div8_lut[divisor]; }
 
-} // namespace jip
+} // namespace cip

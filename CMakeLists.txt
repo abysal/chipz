@@ -22,7 +22,6 @@ set(ASMJIT_NO_FOREIGN TRUE)
 
 CPMAddPackage("gh:raysan5/raylib#983efae3e4565cdf1441cb0b3dff9498bb0147e8")
 CPMAddPackage("gh:asmjit/asmjit#12f9ca3b320e0d7e7eb6637a6af7fedbd12b8ddc")
-CPMAddPackage("gh:ridiculousfish/libdivide#eea3b2436925396287abe64298e0e8a1c5674f68")
 
 file(GLOB_RECURSE SOURCES CONFIGURE_DEPENDS "core/*.cpp" "core/*.hpp")
 
@@ -32,6 +31,6 @@ set_property(TARGET ChipzCore PROPERTY INTERPROCEDURAL_OPTIMIZATION TRUE)
 
 add_executable(Chipz main.cpp)
 target_include_directories(Chipz PRIVATE "core")
-target_link_libraries(ChipzCore PUBLIC raylib asmjit::asmjit libdivide)
+target_link_libraries(ChipzCore PUBLIC raylib asmjit::asmjit)
 target_link_libraries(Chipz ChipzCore)
 set_property(TARGET Chipz PROPERTY INTERPROCEDURAL_OPTIMIZATION TRUE)
